@@ -24,9 +24,13 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row col-12">
-                <form action="#" class="form-group col-4">
-                    <input type="text" class="form-control" placeholder="Название категории">
-                    <input class="btn btn-primary mt-2 w-25" value="Добавить">
+                <form action="{{ route('admin.category.store') }}" method="POST" class="form-group col-4">
+                    @csrf
+                    <input type="text" class="form-control" placeholder="Название категории" name="title">
+                    @error('title')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                    <input type="submit" class="btn btn-primary mt-2 w-25" value="Добавить">
                 </form>
             </div>
 
