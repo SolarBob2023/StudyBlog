@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumTitleToTagsTable extends Migration
+class AddColumnsForImagesToPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddColumTitleToTagsTable extends Migration
      */
     public function up()
     {
-        Schema::table('tags', function (Blueprint $table) {
-            $table->string('title')->nullable()->after('id');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->string('preview_image')->nullable();
+            $table->string('main_image')->nullable();
         });
     }
 
@@ -25,8 +26,8 @@ class AddColumTitleToTagsTable extends Migration
      */
     public function down()
     {
-        Schema::table('tags', function (Blueprint $table) {
-            $table->dropColumn('title');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropColumn(['preview_image', 'main_image']);
         });
     }
 }
