@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Категории</h1>
+                    <h1 class="m-0">Тэги</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -24,7 +24,7 @@
         <div class="container-fluid">
            <div class="row">
                <div class="col-12">
-                   <a href="{{ route('admin.category.create') }}" class="btn btn-primary">Добавить</a>
+                   <a href="{{ route('admin.tag.create') }}" class="btn btn-primary">Добавить</a>
                </div>
                 <div class="col-6 mt-3">
                     <div class="card">
@@ -38,14 +38,14 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach( $categories as $category)
+                                @foreach( $tags as $tag)
                                     <tr>
-                                        <td>{{$category->id}}</td>
-                                        <td>{{$category->title}}</td>
-                                        <td><a href="{{ route('admin.category.show', $category->id) }}"><i class="fas fa-eye"></i></a></td>
-                                        <td><a href="{{ route('admin.category.edit', $category->id) }}"><i class="fas fa-pencil-alt"></i></a></td>
+                                        <td>{{$tag->id}}</td>
+                                        <td>{{$tag->title}}</td>
+                                        <td><a href="{{ route('admin.tag.show', $tag->id) }}"><i class="fas fa-eye"></i></a></td>
+                                        <td><a href="{{ route('admin.tag.edit', $tag->id) }}"><i class="fas fa-pencil-alt"></i></a></td>
                                         <td>
-                                            <form action="{{ route('admin.category.delete', $category->id) }}" method="POST">
+                                            <form action="{{ route('admin.tag.delete', $tag->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="border-0 bg-transparent">
