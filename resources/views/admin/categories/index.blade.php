@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Dashboard</h1>
+                    <h1 class="m-0">Категории</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -31,7 +31,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Название</th>
-                                    <th>Действие</th>
+                                    <th colspan="2">Действие</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -40,6 +40,7 @@
                                         <td>{{$category->id}}</td>
                                         <td>{{$category->title}}</td>
                                         <td><a href="{{ route('admin.category.show', $category->id) }}"><i class="fas fa-eye"></i></a></td>
+                                        <td><a href="{{ route('admin.category.edit', $category->id) }}"><i class="fas fa-pencil-alt"></i></a></td>
                                     </tr>
                                 @endforeach
 
