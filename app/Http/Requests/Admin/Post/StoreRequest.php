@@ -30,7 +30,25 @@ class StoreRequest extends FormRequest
             'preview_image' => 'required|file',
             'main_image' => 'required|file',
             'tag_ids' => 'nullable|array',
-            'tag_ids.*' => 'nullable|required|integer|exists:tags,id',
+            'tag_ids.*' => 'nullable|integer|exists:tags,id',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Это поле необходимо для заполения',
+            'title.string' => 'Данные должны быть строкой',
+            'content.required' => 'Это поле необходимо для заполения',
+            'content.string' => 'Данные должны быть строкой',
+            'category_id.required' => 'Это поле необходимо для заполения',
+            'category_id.integer' => 'Данные должны быть целым числом',
+            'preview_image.required' => 'Это поле необходимо для заполения',
+            'preview_image.file' => 'Необходимо выбрать файл',
+            'main_image.required' => 'Это поле необходимо для заполения',
+            'main_image.file' => 'Необходимо выбрать файл',
+            'tag_ids.array' => 'Данные должны быть массивом',
+        ];
+    }
+
 }
