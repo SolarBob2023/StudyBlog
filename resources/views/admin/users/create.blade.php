@@ -48,10 +48,10 @@
                     @error('role_id')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
-                    <input type="text" class="form-control" placeholder="Пароль" name="password">
-                    @error('password')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
+{{--                    <input type="text" class="form-control" placeholder="Пароль" name="password">--}}
+{{--                    @error('password')--}}
+{{--                        <div class="text-danger">{{ $message }}</div>--}}
+{{--                    @enderror--}}
                     <input type="submit" class="btn btn-primary mt-2 w-25" value="Добавить">
                 </form>
             </div>
