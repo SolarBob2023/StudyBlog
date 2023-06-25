@@ -23,36 +23,42 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3>10</h3>
+                <div class="col-6 mt-3">
+                    <div class="card">
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Название</th>
+                                    <th colspan="2">Действие</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach( $posts as $post)
+                                    <tr>
+                                        <td>{{$post->id}}</td>
+                                        <td>{{$post->title}}</td>
+                                        <td><a href="{{ route('admin.post.show', $post->id) }}"><i class="fas fa-eye"></i></a></td>
+                                        <td>
+                                            <form action="{{ route('personal.liked.delete', $post->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="border-0 bg-transparent">
+                                                    <i class=" text-danger fas fa-trash" ></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
-                            <p>Пользователи</p>
+
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <a href="{{ route('personal.liked.index') }}" class="small-box-footer">Подробнее<i class="fas fa-arrow-circle-right"></i></a>
+                        <!-- /.card-body -->
                     </div>
                 </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            <h3>10</h3>
-
-                            <p>Комментарии</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-th-list"></i>
-                        </div>
-                        <a href="{{ route('personal.comment.index') }}" class="small-box-footer">Подробнее<i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
             </div>
 
         </div><!-- /.container-fluid -->
