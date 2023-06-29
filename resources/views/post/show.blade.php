@@ -31,6 +31,30 @@
                     </div>
                 </section>
                 <section class="comment-section">
+                    <div class="my-4">
+                        @auth()
+                            <form action="{{ route('post.like.store', $post->id) }}" method="post">
+                                @csrf
+                                <span>{{ $post->liked_users_count }}</span>
+                                <button class="border-0 bg-transparent" type="submit">
+
+                                    @if (auth()->user()->likedPosts->contains($post->id))
+                                        <i class="fas fa-heart"></i>
+                                    @else
+                                        <i class="far fa-heart"></i>
+                                    @endif
+
+                                </button>
+                            </form>
+                        @endauth
+                        @guest()
+                            <div>
+                                <span>{{ $post->liked_users_count }}</span>
+                                <i class="far fa-heart"></i>
+                            </div>
+                        @endguest
+                    </div>
+                    <h4>Комментарии ({{$post->comments->count()}})</h4>
                     @foreach($post->comments as $comment)
                     <div class="comment-text mt-4">
                         <span class="username">

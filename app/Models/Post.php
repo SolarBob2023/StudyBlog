@@ -13,7 +13,7 @@ class Post extends Model
 
     protected $guarded = false;
     protected $table = 'posts';
-
+    protected $withCount = ['likedUsers'];
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
