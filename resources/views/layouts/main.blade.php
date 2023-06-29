@@ -20,8 +20,24 @@
             <div class="collapse navbar-collapse" id="edicaMainNav">
                 <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('main.index') }}">Blog</a>
+                        <a class="nav-link" href="{{ route('main.index') }}">Блог</a>
                     </li>
+                    <li class="nav-item">
+                        @guest()
+                        <a class="nav-link" href="{{ route('personal.main.index') }}">Войти</a>
+                        @endguest
+                        @auth()
+                        <a class="nav-link" href="{{ route('personal.main.index') }}">Личный кабинет</a>
+                        @endauth
+                    </li>
+                    @auth()
+                        <li class="nav-item">
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <input type="submit" value="Выйти" class="btn btn-outline-primary">
+                            </form>
+                        </li>
+                    @endauth
                 </ul>
 
             </div>
